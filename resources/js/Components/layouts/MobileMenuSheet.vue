@@ -57,7 +57,6 @@ const handleSearchSubmit = (value) => {
                         src="/images/blogx-logo.png"
                         alt="Logo"
                     />
-                    <span class="font-semibold">{{ appName }}</span>
                 </Link>
             </SheetTitle>
         </SheetHeader>

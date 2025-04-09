@@ -206,7 +206,7 @@ function updateOpenState(open: boolean) {
                     <FormItem
                         class="flex flex-row items-start space-x-3 space-y-0"
                     >
-                        <FormControl>
+                        <FormControl class="mr-0 flex items-center leading-0">
                             <Checkbox
                                 :checked="inertiaForm.remember"
                                 @update:checked="
@@ -215,7 +215,7 @@ function updateOpenState(open: boolean) {
                                     "
                             />
                         </FormControl>
-                        <FormLabel class="font-normal">Remember me </FormLabel>
+                        <FormLabel class="font-normal">Remember me</FormLabel>
                         <FormMessage />
                     </FormItem>
                 </FormField>
