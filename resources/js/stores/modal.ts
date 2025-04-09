@@ -6,12 +6,12 @@ interface IAuthModalState {
     isRegisterOpen: boolean;
 }
 
-export enum Modal {
+export enum EModal {
     LOGIN = "login",
     REGISTER = "register",
 }
 
-type TModal = Modal.LOGIN | Modal.REGISTER;
+type TModal = EModal.LOGIN | EModal.REGISTER;
 
 export const useModalStore = defineStore("modal", {
     state: (): IAuthModalState => ({
@@ -26,11 +26,11 @@ export const useModalStore = defineStore("modal", {
         },
 
         hideModal(modal: TModal) {
-            if (modal === Modal.LOGIN) {
+            if (modal === EModal.LOGIN) {
                 this.isLoginOpen = false;
             }
 
-            if (modal === Modal.REGISTER) {
+            if (modal === EModal.REGISTER) {
                 this.isRegisterOpen = false;
             }
         },

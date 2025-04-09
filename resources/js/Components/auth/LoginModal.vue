@@ -7,15 +7,12 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/Components/ui/dialog";
 
 import { Checkbox } from "@/Components/ui/checkbox";
 
 import {
-    Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -26,12 +23,12 @@ import { Input } from "@/Components/ui/input";
 
 import { toast } from "vue-sonner";
 
-import { toTypedSchema } from "@vee-validate/zod";
-import { h, watch } from "vue";
-import * as z from "zod";
+import { EModal as ModalEnum } from "@/stores/modal";
 import { useForm } from "@inertiajs/vue3";
+import { toTypedSchema } from "@vee-validate/zod";
 import { useForm as useVeeForm } from "vee-validate";
-import { Modal as ModalEnum } from "@/stores/modal";
+import { watch } from "vue";
+import * as z from "zod";
 
 import { useModalStore } from "@/stores/modal";
 
@@ -233,7 +230,7 @@ function updateOpenState(open: boolean) {
                     v-if="inertiaForm.errors.password"
                     class="text-sm font-medium text-destructive"
                 >
-                    {{ inertiaForm.errors.remember }}
+                    {{ inertiaForm.errors.password }}
                 </div>
                 <div
                     v-if="inertiaForm.errors.remember"
