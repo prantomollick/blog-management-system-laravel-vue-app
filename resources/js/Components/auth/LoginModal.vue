@@ -22,9 +22,10 @@ import {
 import { Input } from "@/Components/ui/input";
 
 import { toast } from "vue-sonner";
+import { Loader2 } from "lucide-vue-next";
 
 import { EModal as ModalEnum } from "@/stores/modal";
-import { useForm } from "@inertiajs/vue3";
+import { useForm, Link } from "@inertiajs/vue3";
 import { toTypedSchema } from "@vee-validate/zod";
 import { useForm as useVeeForm } from "vee-validate";
 import { watch } from "vue";
@@ -240,7 +241,15 @@ function updateOpenState(open: boolean) {
                 </div>
             </form>
 
-            <DialogFooter>
+            <DialogFooter class="flex items-center">
+                <Link
+                    :href="route('password.request')"
+                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-hidden"
+                    @click.prevent="modalStore.hideModal(ModalEnum.LOGIN)"
+                >
+                    Forgot your password?
+                </Link>
+
                 <!-- Link button type="submit" to the form using the form ID -->
                 <!-- Disable button when Inertia form is processing -->
                 <Button
@@ -248,6 +257,10 @@ function updateOpenState(open: boolean) {
                     form="loginDialogForm"
                     :disabled="inertiaForm.processing"
                 >
+                    <Loader2
+                        v-if="inertiaForm.processing"
+                        class="w-4 h-4 mr-2 animate-spin"
+                    />
                     <span v-if="inertiaForm.processing">Logging In...</span>
                     <span v-else>Log In</span>
                 </Button>

@@ -29,6 +29,7 @@ import { watch } from "vue";
 import * as z from "zod";
 
 import { useModalStore } from "@/stores/modal";
+import { Loader2 } from "lucide-vue-next";
 
 const modalStore = useModalStore();
 
@@ -322,7 +323,17 @@ function updateOpenState(open: boolean) {
                 </div>
             </form>
 
-            <DialogFooter>
+            <DialogFooter class="flex items-center">
+                <Button
+                    variant="link"
+                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-hidden cursor-pointer"
+                    @click.prevent="
+                        modalStore.hideModal(ModalEnum.REGISTER);
+                        modalStore.showModal(ModalEnum.LOGIN);
+                    "
+                >
+                    Already registered?
+                </Button>
                 <!-- Link button type="submit" to the form using the form ID -->
                 <!-- Disable button when Inertia form is processing -->
                 <Button
@@ -330,9 +341,13 @@ function updateOpenState(open: boolean) {
                     form="registerDialogForm"
                     :disabled="inertiaForm.processing"
                 >
-                    <span v-if="inertiaForm.processing"
-                        >Creating Account...</span
-                    >
+                    <Loader2
+                        v-if="inertiaForm.processing"
+                        class="w-4 h-4 mr-2 animate-spin"
+                    />
+                    <span v-if="inertiaForm.processing">
+                        Creating Account...
+                    </span>
                     <span v-else>Create Account</span>
                 </Button>
             </DialogFooter>

@@ -90,14 +90,24 @@ const handleSearch = () => {
                     <div class="-mr-2 flex items-center sm:hidden">
                         <!-- Mobile Menu Button Here -->
                         <!-- Example: Login/Register links can be shown here -->
-                        <Link :href="route('login')" class="text-sm mx-2"
-                            >Log in</Link
+                        <Button
+                            class="mr-4 cursor-pointer"
+                            variant="link"
+                            @click="modalStore.showModal('login')"
+                            size="sm"
+                            aria-label="Login"
                         >
-                        <Link :href="route('register')">
-                            <Button variant="outline" size="sm"
-                                >Register</Button
-                            >
-                        </Link>
+                            Log in
+                        </Button>
+
+                        <Button
+                            variant="default"
+                            @click="modalStore.showModal('register')"
+                            size="sm"
+                            aria-label="Register"
+                        >
+                            Create Account
+                        </Button>
                     </div>
                 </div>
             </div>
