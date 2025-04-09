@@ -3,9 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon; // Import Carbon for date manipulation
+use Illuminate\Support\Facades\Storage; // If handling default pic logic here
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -35,6 +40,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['formatted_join_date']; // Add our accessors here
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -46,4 +58,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+   /**
+     * Get the user's formatted join date.
+     * Uses PHP 8 attribute syntax.
+     */
+
+    protected function formattedJoinDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => isset($attributes['created_at'])
+                ? Carbon::parse($attributes['created_at'])->format('M j, Y') // Format: e.g., Aug 15, 2023
+                : null,
+        );
+    }
+
 }

@@ -55,14 +55,17 @@ const profilePicUrl = computed(
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" class="w-56">
             <DropdownMenuLabel class="font-normal">
-                <div class="flex flex-col space-y-1">
+                <DropdownLink
+                    :href="route('userprofile.show', user.username)"
+                    class="flex flex-col space-y-1"
+                >
                     <p class="text-sm font-medium leading-none">
                         {{ user.name }}
                     </p>
                     <p class="text-xs leading-none text-muted-foreground">
                         @{{ user.username }}
                     </p>
-                </div>
+                </DropdownLink>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem as-child>
