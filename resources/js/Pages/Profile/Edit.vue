@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import GuestLayout from "@/Layouts/GuestLayout.vue";
+import GuestLayout from "@/Layouts/MainLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import DeleteUserForm from "./Partials/DeleteUserForm.vue";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";

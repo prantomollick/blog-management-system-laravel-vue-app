@@ -1,19 +1,20 @@
 <script setup>
-import { ref, computed } from "vue";
-import { Head, router, usePage } from "@inertiajs/vue3";
-import { Toaster } from "@/Components/ui/sonner";
 import LoginModal from "@/Components/auth/LoginModal.vue";
 import RegistrationModal from "@/Components/auth/RegistrationModal.vue";
-import PrimaryNavbar from "@/Components/layouts/PrimaryNavbar.vue";
-import MobileMenuSheet from "@/Components/layouts/MobileMenuSheet.vue";
+import MobileMenuSheet from "@/Components/layouts/main/MobileMenuSheet.vue";
+import PrimaryNavbar from "@/Components/layouts/main/PrimaryNavbar.vue";
 import { Sheet } from "@/Components/ui/sheet"; // <-- Import Sheet here
+import { Toaster } from "@/Components/ui/sonner";
+import { useAuth } from "@/hooks/useAuth";
+import { Head, router } from "@inertiajs/vue3";
+import { computed, ref } from "vue";
 
 const appName = import.meta.env.VITE_APP_NAME || "BlogApp";
 const searchInput = ref("");
 const showingMobileMenu = ref(false); // State for controlling the sheet
 
-const page = usePage();
-const user = computed(() => page.props.auth.user);
+const { isAuthenticated, user } = useAuth();
+
 const notifications = ref([
     /* ... placeholder data ... */
 ]);
@@ -75,7 +76,7 @@ router.on("navigate", () => {
         </header>
 
         <main class="flex-grow py-8 md:py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"><slot /></div>
+            <slot />
         </main>
 
         <footer
@@ -85,7 +86,9 @@ router.on("navigate", () => {
         </footer>
     </div>
 
-    <LoginModal />
-    <RegistrationModal />
+    <template :v-if="!isAuthenticated">
+        <LoginModal />
+        <RegistrationModal />
+    </template>
     <Toaster richColors position="top-right" />
 </template>

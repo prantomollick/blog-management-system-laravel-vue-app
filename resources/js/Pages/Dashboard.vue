@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import GuestLayout from "@/Layouts/GuestLayout.vue";
+import MainLayout from "@/Layouts/MainLayout.vue";
 import { Head } from "@inertiajs/vue3";
 </script>
 
 <template>
     <Head title="Dashboard" />
 
-    <GuestLayout>
+    <MainLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Dashboard
@@ -20,5 +20,5 @@ import { Head } from "@inertiajs/vue3";
                 </div>
             </div>
         </div>
-    </GuestLayout>
+    </MainLayout>
 </template>

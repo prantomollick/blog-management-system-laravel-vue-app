@@ -85,7 +85,7 @@ const profilePicUrl = computed(
             </DropdownMenuItem>
             <DropdownMenuItem as-child>
                 <!-- NOTE: Update this route('login') placeholder -->
-                <Link :href="route('login')">
+                <Link :href="route('profile.edit')">
                     <Settings class="mr-2 h-4 w-4" /> <span>Settings</span>
                 </Link>
             </DropdownMenuItem>

@@ -15,9 +15,21 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        // It's often good practice to seed Users first if Posts depend on them
+        // If you have a UserSeeder, call it first:
+        $this->call(UserSeeder::class);
+
+
+        // Or ensure some users exist if you rely on existing ones in PostFactory
+        // \App\Models\User::factory(10)->create(); // Example: Create 10 users if needed
+
+        //now call your PostSeeder
+
+        $this->call([PostSeeder::class]);
     }
 }
