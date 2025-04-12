@@ -34,8 +34,6 @@ Route::middleware('auth')->group(function () {
 // Public Routes
 // Route::get('/', [PostController::class,'index'])->name('post.index');//or a dedicated home controller
 Route::get('/posts', [PostController::class,'index'])->name('post.index');
-Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
-
 //authenticated routes
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/posts/create', [PostController::class,'create'])->name('post.create');
@@ -44,5 +42,6 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::put('/posts/{post}', [PostController::class,'update'])->name('post.update'); // use PUT//PATCH for update
     Route::delete('/posts/{post}', [PostController::class,'destroy'])->name('post.destroy');
 });
+Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
 
 require __DIR__.'/auth.php';

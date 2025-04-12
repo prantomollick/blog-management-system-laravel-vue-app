@@ -89,7 +89,7 @@ const handleMarkAllRead = () => {
                         <!-- Create Post Button -->
                         <Button variant="default" size="sm" as-child>
                             <!-- {/* --- TODO: Update this route placeholder --- */} -->
-                            <Link :href="route('login')">
+                            <Link :href="route('post.create')">
                                 <PlusCircle class="h-4 w-4 mr-2" /> Create Post
                             </Link>
                         </Button>

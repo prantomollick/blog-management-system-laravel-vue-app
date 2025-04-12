@@ -76,7 +76,7 @@ const profilePicUrl = computed(
             </DropdownMenuItem>
             <DropdownMenuItem as-child>
                 <!-- NOTE: Update this route('login') placeholder -->
-                <Link :href="route('login')">
+                <Link :href="route('post.create')">
                     <PlusCircle class="mr-2 h-4 w-4" /> <span>Create Post</span>
                 </Link>
             </DropdownMenuItem>

@@ -119,6 +119,8 @@ const onSubmit = handleSubmit(() => {
             toast.success("Login successful", {
                 description: "You have successfully logged in.",
             });
+
+            // redirect on the same page if the user is already logged in
         },
 
         onError: (errors) => {

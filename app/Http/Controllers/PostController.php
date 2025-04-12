@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+
 
 class PostController extends Controller
 {
@@ -56,7 +58,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        //Optionally pass tags or other data needed for the form
+        return  Inertia::render('Posts/Create');
     }
 
     /**

@@ -46,6 +46,7 @@ router.on("navigate", () => {
         <Sheet v-model:open="showingMobileMenu">
             <PrimaryNavbar
                 :user="user"
+                :isAuthenticated="isAuthenticated"
                 :notifications="notifications"
                 :unread-count="unreadCount"
                 v-model:searchInput="searchInput"
@@ -90,5 +91,5 @@ router.on("navigate", () => {
         <LoginModal />
         <RegistrationModal />
     </template>
-    <Toaster richColors position="top-right" />
+    <Toaster richColors position="bottom-right" />
 </template>
