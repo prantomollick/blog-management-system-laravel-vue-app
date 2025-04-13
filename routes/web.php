@@ -36,7 +36,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/posts', [PostController::class,'index'])->name('post.index');
 //authenticated routes
 Route::middleware(['auth', 'verified'])->group(function() {
+     // Route to display the post creation form (handled by Inertia)
     Route::get('/posts/create', [PostController::class,'create'])->name('post.create');
+    
+    // Route to handle the actual form submission (POST request)
     Route::post('/posts', [PostController::class,'store'])->name('post.store');
     Route::get('/posts/{post}/edit', [PostController::class,'edit'])->name('post.edit');
     Route::put('/posts/{post}', [PostController::class,'update'])->name('post.update'); // use PUT//PATCH for update

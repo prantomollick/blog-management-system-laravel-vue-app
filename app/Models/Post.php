@@ -10,13 +10,26 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'title',
-        'content',
-        'image',
-        'visibility',
-        'slug',
+        'user_id',      // The ID of the user who created the post
+        'title',        // The post title
+        'content',      // The post content (HTML from Tiptap)
+        'image',        // Path to the optional cover image
+        'slug',         // The URL-friendly slug (generated automatically)
+        'visibility',   // Post visibility (e.g., 'public', 'private')
     ];
+
+        /**
+     * The attributes that should be cast.
+     *
+     * If you were storing Tiptap content as JSON:
+     * protected $casts = [
+     *     'content' => 'array',
+     * ];
+     */
+    protected $casts = [
+        // Add casts if needed, e.g., for visibility if using an Enum later
+    ];
+
 
     protected function visibility(): Attribute 
     {
